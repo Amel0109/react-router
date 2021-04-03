@@ -1,0 +1,36 @@
+.ItemCard {
+    width: 160px;
+    border: 2px solid green;
+    border-radius: 5px;
+    background-color: rgba(210, 243, 167, 0.966);
+    margin: 1em;
+    padding: 1rem;
+    color: darkgreen;
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+.name {
+    font-size: 1.5rem;
+}
+
+.pic-container {
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem 0;
+}
+
+
+.availability {
+    padding: 0.5rem 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.price {
+    display: flex;
+    justify-content: space-between;
+}
+
+span {
+    font-weight: 600;
+}
