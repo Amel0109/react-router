@@ -1,1 +1,5 @@
-.App {}
+.App {
+  height: 100vw;
+  width: 100vw;
+  background-color: rgb(159, 226, 243);
+}

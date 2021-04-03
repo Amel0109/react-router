@@ -1,0 +1,4 @@
+.Shop {
+    display: flex;
+    flex-direction: row;
+}

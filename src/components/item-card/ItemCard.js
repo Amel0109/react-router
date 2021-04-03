@@ -1,7 +1,7 @@
 import React from 'react';
 import './ItemCard.css';
 
-function ItemCard({ name, availability, price }) {
+function ItemCard({ key, id, name, availability, price, quantity, isAdmin, onQuantityChange }) {
     return (
         <div className="ItemCard">
             <span className="name">{name}</span>
@@ -11,6 +11,20 @@ function ItemCard({ name, availability, price }) {
                     height="100"
                 />
             </div>
+            {!isAdmin ?
+                <div className="button-container">
+                    <button
+                        onClick={() => onQuantityChange(id, '-')}
+                        disabled={quantity === 0}
+                    >-</button>
+                    <span className="quantity">{quantity}</span>
+                    <button
+                        onClick={() => onQuantityChange(id, '+')}
+                        disabled={availability === 0}
+                    >+</button>
+                </div>
+                : null
+            }
             <div className="availability">
                 <label>Available:</label>
                 <span>{availability}</span>
@@ -19,7 +33,14 @@ function ItemCard({ name, availability, price }) {
                 <label>Price:</label>
                 <span>{price}$</span>
             </div>
-        </div>
+            {isAdmin ?
+                <div className="button-cont">
+                    <button>Delete</button>
+                    <button>Edit</button>
+                </div>
+                : null
+            }
+        </div >
     )
 };
 
