@@ -1,11 +1,11 @@
 import React from 'react';
 import './ItemCard.css';
 
-function ItemCard({ key, id, name, availability, price, quantity, isAdmin, onQuantityChange }) {
+function ItemCard({ key, id, name, availability, price, quantity, isAdmin, onQuantityChange, onDeleteClick, onItemClick }) {
     return (
-        <div className="ItemCard">
+        <div className="ItemCard" >
             <span className="name">{name}</span>
-            <div className="pic-container">
+            <div className="pic-container" onClick={() => onItemClick(id)}>
                 <img alt="pic" src="https://img.icons8.com/color/1600/grocery-bag.png"
                     width="100"
                     height="100"
@@ -35,7 +35,7 @@ function ItemCard({ key, id, name, availability, price, quantity, isAdmin, onQua
             </div>
             {isAdmin ?
                 <div className="button-cont">
-                    <button>Delete</button>
+                    <button onClick={() => onDeleteClick(id)}>Delete</button>
                     <button>Edit</button>
                 </div>
                 : null

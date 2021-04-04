@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ItemCard from '../../components/item-card/ItemCard';
 import './Shop.css';
 
-function Shop({ items, setItems, isAdmin }) {
+function Shop({ items, setItems, isAdmin, onItemClick }) {
 
     const [quantity, setQuantity] = useState({
         '1': 0,
@@ -36,6 +36,7 @@ function Shop({ items, setItems, isAdmin }) {
                     quantity={quantity[key]}
                     isAdmin={isAdmin}
                     onQuantityChange={onQuantityChange}
+                    onItemClick={onItemClick}
                 />
             )}
         </div>
