@@ -4,6 +4,7 @@ import './App.css';
 import { Admin } from '../src/pages/admin/Admin';
 import { Shop } from '../src/pages/shop/Shop';
 import { Item } from '../src/pages/item/Item';
+import { Cart } from '../src/pages/cart/Cart';
 
 
 function App() {
@@ -31,13 +32,14 @@ function App() {
     },
   });
 
-  const [isAdmin, setIsAdmin] = useState(true)
-  const [selectedItem, setSelectedItem] = useState(null);
+  const [isAdmin, setIsAdmin] = useState(true);
 
   const onItemClick = (id) => {
-    const item = { ...items[id] };
-    setSelectedItem(item);
-    history.push('/Item');
+    history.push(`/item/${id}`);
+  };
+
+  const getItem = (id) => {
+    return items[id] ? items[id] : null;
   };
 
   return (
@@ -59,15 +61,13 @@ function App() {
             onItemClick={onItemClick}
           />
         </Route>
-        <Route exact path="/item">
-          <Item
-            selectedItem={selectedItem}
-          />
+        <Route exact path='/item/:id'>
+          <Item getItem={getItem} />
         </Route>
-        {/*<Route exact path="/cart">
+        <Route exact path="/cart">
           <Cart />
         </Route>
-        <Route exact path="/add">
+        {/*<Route exact path="/add">
           <Items />
         </Route> */}
         <Route path="/">

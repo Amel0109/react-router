@@ -1,23 +1,29 @@
-import React, { useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
 import './Item.css';
 
-function Item({ selectedItem }) {
+function Item({ getItem }) {
+
 
     const history = useHistory();
+    const [item, setItem] = useState(null);
+    const { id } = useParams();
 
     useEffect(() => {
-        if (!selectedItem) {
-            history.push('/Shop')
+        const temp = getItem(id);
+        if (temp) {
+            setItem(temp)
+        } else {
+            history.push('/shop')
         }
-    }, [])
+    }, [id])
 
-    if (selectedItem) {
+    if (item) {
 
 
         return (
             <div className="Item">
-                <div className="name">{selectedItem.name}</div>
+                <div className="name">{item.name}</div>
             </div>
         )
     } else return <div>loading...</div>

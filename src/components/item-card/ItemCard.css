@@ -13,6 +13,11 @@
     font-size: 1.5rem;
 }
 
+.name-cart {
+    display: flex;
+    justify-content: space-between;
+}
+
 .pic-container {
     display: flex;
     justify-content: center;
