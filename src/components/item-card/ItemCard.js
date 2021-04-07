@@ -1,21 +1,13 @@
 import React from 'react';
 import './ItemCard.css';
-import { HiShoppingCart } from 'react-icons/hi';
-import { Link } from 'react-router-dom';
+
 
 function ItemCard({ id, name, availability, price, quantity, isAdmin, onQuantityChange, onDeleteClick, onItemClick }) {
     return (
         <div className="ItemCard" >
-            <div className="name-cart">
-                <span className="name">{name}</span>
 
-                {(quantity > 0) ?
-                    <Link to='/cart'>
-                        <button><HiShoppingCart /></button>
-                    </Link> :
-                    null}
+            <span className="name">{name}</span>
 
-            </div>
             <div className="pic-container" onClick={() => onItemClick(id)}>
                 <img alt="pic" src="https://img.icons8.com/color/1600/grocery-bag.png"
                     width="100"

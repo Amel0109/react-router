@@ -1,14 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ItemCard from '../../components/item-card/ItemCard';
 import './Shop.css';
+import CartButton from '../../components/cartButton/CartButton'
 
-function Shop({ items, setItems, isAdmin, onItemClick }) {
+function Shop({ quantity, setQuantity, items, setItems, isAdmin, onItemClick, boughtItems }) {
 
-    const [quantity, setQuantity] = useState({
-        '1': 0,
-        '2': 0,
-        '3': 0
-    });
+
 
     const onQuantityChange = (key, sign) => {
         const quan = { ...quantity };
@@ -39,6 +36,9 @@ function Shop({ items, setItems, isAdmin, onItemClick }) {
                     onItemClick={onItemClick}
                 />
             )}
+            <div className="cart">
+                <CartButton items={boughtItems} />
+            </div>
         </div>
     )
 };

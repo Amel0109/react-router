@@ -2,3 +2,9 @@
     display: flex;
     flex-direction: row;
 }
+
+.cart {
+    position: fixed;
+    right: 1em;
+    top: 1em;
+}

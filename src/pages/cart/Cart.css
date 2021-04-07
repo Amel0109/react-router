@@ -1,1 +1,36 @@
-.Cart {}
+.Cart {
+    width: 250px;
+    min-height: 350px;
+    overflow-y: auto;
+    border: 3px solid rgb(76, 133, 238);
+    background-color: rgb(204, 217, 241);
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    padding: 1em 1rem;
+    border-radius: 4px;
+    position: fixed;
+    left: 2rem;
+    top: 2rem;
+    color: rgb(6, 20, 99);
+}
+
+.header {
+    font-weight: 600;
+    margin-bottom: 1.5em;
+    font-size: 1.5rem;
+}
+
+.items {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.2rem;
+    background-color: rgb(200, 160, 238);
+}
+
+.total {
+    position: absolute;
+    bottom: 10px;
+    width: calc(100% - 2rem);
+    background-color: coral;
+    display: flex;
+    justify-content: space-between;
+}

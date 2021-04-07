@@ -32,6 +32,12 @@ function App() {
     },
   });
 
+  const [quantity, setQuantity] = useState({
+    '1': 0,
+    '2': 0,
+    '3': 0
+  });
+
   const [isAdmin, setIsAdmin] = useState(true);
 
   const onItemClick = (id) => {
@@ -41,6 +47,16 @@ function App() {
   const getItem = (id) => {
     return items[id] ? items[id] : null;
   };
+
+  const boughtItems = Object.entries(quantity)
+    .filter(item => item[1] > 0)
+    .map(([key, value]) => {
+      return {
+        name: items[key].name,
+        price: items[key].price,
+        quantity: value
+      }
+    })
 
   return (
     <div className="App">
@@ -55,17 +71,20 @@ function App() {
         </Route>
         <Route exact path="/shop">
           <Shop
+            quantity={quantity}
+            setQuantity={setQuantity}
             items={items}
             isAdmin={!isAdmin}
             setItems={setItems}
             onItemClick={onItemClick}
+            boughtItems={boughtItems}
           />
         </Route>
         <Route exact path='/item/:id'>
           <Item getItem={getItem} />
         </Route>
         <Route exact path="/cart">
-          <Cart />
+          <Cart items={boughtItems} />
         </Route>
         {/*<Route exact path="/add">
           <Items />
