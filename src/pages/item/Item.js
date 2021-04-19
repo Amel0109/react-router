@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
+import ShopButton from '../../components/shopButton/ShopButton';
 import './Item.css';
 
 function Item({ getItem }) {
@@ -24,7 +25,9 @@ function Item({ getItem }) {
         return (
             <div className="Item">
                 <div className="name">{item.name}</div>
+                <ShopButton />
             </div>
+
         )
     } else return <div>loading...</div>
 };

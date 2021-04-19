@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './ItemCard.css';
 
 
-function ItemCard({ id, name, availability, price, quantity, isAdmin, onQuantityChange, onDeleteClick, onItemClick }) {
+function ItemCard({ id, name, availability, price, quantity, isAdmin, onQuantityChange, onDeleteClick, onItemClick, onEditClick }) {
     return (
         <div className="ItemCard" >
 
@@ -39,7 +40,9 @@ function ItemCard({ id, name, availability, price, quantity, isAdmin, onQuantity
             {isAdmin ?
                 <div className="button-cont">
                     <button onClick={() => onDeleteClick(id)}>Delete</button>
-                    <button>Edit</button>
+                    <Link to='/add'>
+                        <button onClick={() => onEditClick(id)}>Edit</button>
+                    </Link>
                 </div>
                 : null
             }

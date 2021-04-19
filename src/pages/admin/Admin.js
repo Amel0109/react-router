@@ -1,8 +1,9 @@
 import React from 'react';
 import './Admin.css';
 import ItemCard from '../../components/item-card/ItemCard';
+import ShopButton from '../../components/shopButton/ShopButton';
 
-function Admin({ items, setItems, isAdmin, onItemClick }) {
+function Admin({ items, setItems, isAdmin, onItemClick, onEditClick }) {
 
     const onDeleteClick = (id) => {
         const itemList = { ...items };
@@ -21,8 +22,10 @@ function Admin({ items, setItems, isAdmin, onItemClick }) {
                     isAdmin={isAdmin}
                     onDeleteClick={onDeleteClick}
                     onItemClick={onItemClick}
+                    onEditClick={onEditClick}
                 />
             )}
+            <ShopButton />
         </div>
     )
 };

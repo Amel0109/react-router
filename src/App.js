@@ -5,6 +5,7 @@ import { Admin } from '../src/pages/admin/Admin';
 import { Shop } from '../src/pages/shop/Shop';
 import { Item } from '../src/pages/item/Item';
 import { Cart } from '../src/pages/cart/Cart';
+import AddForm from './pages/addForm/AddForm';
 
 
 function App() {
@@ -39,6 +40,8 @@ function App() {
   });
 
   const [isAdmin, setIsAdmin] = useState(true);
+  const [idCounter, setIdCounter] = useState(4);
+  const [selectedItem, setSelectedItem] = useState(null);
 
   const onItemClick = (id) => {
     history.push(`/item/${id}`);
@@ -56,7 +59,28 @@ function App() {
         price: items[key].price,
         quantity: value
       }
-    })
+    });
+
+  const onSave = (newItem) => {
+    if (newItem.id) {
+      const data = { ...items };
+      data[newItem.id] = newItem;
+      setItems(data);
+    } else {
+      const data = { ...items };
+      const quan = { ...quantity };
+      data[idCounter] = newItem;
+      quan[idCounter] = 0;
+      setItems(data);
+      setQuantity(quan)
+      setIdCounter(idCounter + 1);
+    }
+    setSelectedItem(null);
+  };
+
+  const onEditClick = (key) => {
+    setSelectedItem(items[key]);
+  };
 
   return (
     <div className="App">
@@ -67,6 +91,7 @@ function App() {
             isAdmin={isAdmin}
             setItems={setItems}
             onItemClick={onItemClick}
+            onEditClick={onEditClick}
           />
         </Route>
         <Route exact path="/shop">
@@ -86,9 +111,12 @@ function App() {
         <Route exact path="/cart">
           <Cart items={boughtItems} />
         </Route>
-        {/*<Route exact path="/add">
-          <Items />
-        </Route> */}
+        <Route exact path="/add">
+          <AddForm
+            onSave={onSave}
+            selectedItem={selectedItem}
+          />
+        </Route>
         <Route path="/">
           <div>Page not found</div>
         </Route>

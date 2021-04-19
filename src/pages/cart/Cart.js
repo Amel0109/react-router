@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import ShopButton from '../../components/shopButton/ShopButton';
 import './Cart.css';
 
 function Cart({ items }) {
@@ -26,6 +27,7 @@ function Cart({ items }) {
                 <label>Total price</label>
                 <span>{totalPrice}$</span>
             </div>
+            <ShopButton />
         </div>
     )
 };

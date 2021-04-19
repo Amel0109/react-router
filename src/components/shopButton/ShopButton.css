@@ -1,0 +1,12 @@
+.ShopButton {
+    position: fixed;
+    right: 1rem;
+    top: 1rem;
+}
+
+.shop {
+    display: flex;
+    justify-content: center;
+    width: 40px;
+    height: 20px;
+}
